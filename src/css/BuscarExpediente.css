@@ -1,0 +1,35 @@
+/* styles.css */
+
+.buscar_content {
+    display: flex;
+    justify-content: center;
+    -webkit-box-shadow: 2px 4px 23px 1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 2px 4px 23px 1px rgba(0,0,0,0.75);
+    box-shadow: 2px 4px 23px 1px rgba(0,0,0,0.75);
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: white;
+}
+
+.content_expediente {
+    display: flex;
+    text-align: center;
+    height: 500px;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.buscar_expediente {
+    width: 75%;
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 10px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+}
+

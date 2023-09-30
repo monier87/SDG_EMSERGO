@@ -1,0 +1,57 @@
+/* styles.css */
+
+.buscar_content {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: white;
+}
+
+.content_expediente {
+    display: flex;
+    text-align: center;
+    height: 500px;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.buscar_expediente {
+    width: 75%;
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 10px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.actions {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+}
+
+.table-header-cell {
+    color: #0e9390;
+}
+
+.tituloExpediente{
+    color: #0e9390;
+    font-weight: bold;
+    text-align: left;
+    margin: 0 20px 20px 10px;
+}
+
+.tablecell {
+    color: #0e9390;
+    font-weight: bold;
+    text-align: left;
+    margin: 0 20px 20px 10px;
+}

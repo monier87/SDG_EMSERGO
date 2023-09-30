@@ -1,0 +1,131 @@
+/* styles.css */
+
+/* Global Styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Login Container */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #7abaa2;
+}
+
+/* Login Content */
+.login-content {
+  text-align: center;
+  color: #0e9390;
+  min-width: 350px;
+}
+
+/* Login Title */
+.login-title {
+  font-size: 2.5rem;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+}
+
+.login-identy {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Login Form */
+.login-form {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 10px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/* Form Group */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+}
+
+/* Form Label */
+.form-label {
+  margin-bottom: 10px;
+  color: #0e9390 !important;
+  justify-self: start;
+  padding: 0;
+  font-size: 1rem;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  margin: 20px 0px;
+}
+
+/* Form Icon */
+.form-icon {
+  margin-right: 10px;
+}
+
+/* Form Control */
+.form-control {
+  padding: 10px;
+  border-radius: 3px;
+  border: 1px solid #ddd;
+}
+
+/* Login Button */
+.login-button {
+  background-color: #0e9390;
+  color: #ffffff;
+  border: none;
+  padding: 4px 10px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border-radius: 3px;
+  margin-bottom: 20px;
+}
+
+.show-pass-button {
+  background-color: #0e9390;
+}
+
+.show-pass-icon {
+  color: #ffffff;
+  margin-bottom: 5px;
+}
+
+/* Login Icons */
+.login-icons {
+  margin-top: 20px;
+}
+
+/* Login Icon */
+.login-icon {
+  margin: 10px;
+}
+
+.login-info {
+  color: black !important;
+  font-size: 14px;
+}
+
+.login-info a {
+  color: #0e9390 !important;
+  font-size: 14px;
+}
+
+svg {
+  color: #0e9390 !important;
+}
+
+.css-1vooibu-MuiSvgIcon-root {
+  color: #5f2120 !important;
+}

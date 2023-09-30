@@ -1,0 +1,91 @@
+/* styles.css */
+.container {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+}
+
+.main-content {
+    display: flex;
+    width: 100%;
+    padding: 10px 10px;
+}
+
+.form-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 5px 20px;
+}
+
+.form-item {
+    margin-bottom: 10px;
+    border: none;
+}
+
+.form-item-label {
+    display: block;
+    border: none;
+}
+
+.form-item input,
+.form-item textarea,
+.form-item Select {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #0e9390;
+}
+
+div.form-item input:focus{
+    border: none;
+    border-bottom: 1px solid #0e9390;
+}
+
+.form-actions {
+    text-align: center;
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    font-size: 20px;
+    width: 100%;
+    align-items: right;
+    border: none;
+}
+
+.action {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 0 30px 0 30px;
+    justify-content: space-between;
+}
+
+.adjunto {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    padding: 0 0px 0 250px;
+    justify-content: space-between;
+}
+
+.buttonGuardar {
+    background: #0e9390;
+    color: white;
+    margin: 0 0 0 10px;
+    border: none;
+}
+
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #0e9390;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    z-index: 9999;
+}
+
