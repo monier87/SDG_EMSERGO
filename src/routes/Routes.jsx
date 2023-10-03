@@ -5,9 +5,14 @@ import Dashboard from '../modules/Dashboard/Dashboard';
 import InsertarExpediente from '../modules/Expediente/InsertarExpediente';
 import Error from '../modules/Error/Error';
 import ExpedienteTable from '../modules/Expediente/Expedientes';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+
+
 
 function MyRoutes() {
   return (
+  <LocalizationProvider dateAdapter={AdapterDayjs }>
     <BrowserRouter>
       <Routes>
         <Route exact path="/dashboard" element={<PageTemplate/>}>
@@ -19,6 +24,7 @@ function MyRoutes() {
         <Route exact path="*" element={<Error/>} />
       </Routes>
     </BrowserRouter>
+  </LocalizationProvider>
   );
 }
 

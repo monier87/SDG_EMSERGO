@@ -130,9 +130,9 @@ const ExpedienteTable = () => {
                                 <TableRow key={index}>
                                     <TableCell style={{ textAlign: "center" }}><Checkbox defaultChecked={expediente.prioritario} disabled></Checkbox></TableCell>
                                     <TableCell>{expediente.fechaentrada}</TableCell>
-                                    <TableCell style={{ textAlign: "center" }}>{expediente.descripcion}</TableCell>
-                                    <TableCell style={{ textAlign: "center" }}>{expediente.nombreexpediente}</TableCell>
                                     <TableCell style={{ textAlign: "center" }}>{expediente.idexpediente}</TableCell>
+                                    <TableCell style={{ textAlign: "center" }}>{expediente.nombreexpediente}</TableCell>
+                                    <TableCell style={{ textAlign: "center" }}>{expediente.descripcion}</TableCell>
                                     <TableCell style={{ textAlign: "center" }}>{expediente.entidad}</TableCell>
                                     <TableCell>
                                         <div className="actions">
