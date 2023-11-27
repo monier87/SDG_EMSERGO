@@ -36,18 +36,22 @@ const PageTemplate = () => {
     let nombre; // Declaración de la variable
 
     switch (path) {
-        case '/dashboard':
-            nombre = 'DASHBOARD';
-            break;
-        case '/dashboard/expedientes':
-            nombre = 'EXPEDIENTES';
-            break;
-        case '/dashboard/insertar':
-            nombre = 'REGISTRAR EXPEDIENTES';
-            break;
-        default:
-            nombre = 'Título por defecto';
-    }
+      case '/dashboard':
+          nombre = 'DASHBOARD';
+          break;
+      case '/dashboard/expedientes':
+          nombre = 'EXPEDIENTES';
+          break;
+      case '/dashboard/insertar':
+          nombre = 'REGISTRAR EXPEDIENTES';
+          break;
+      case '/dashboard/editar/:id':
+          nombre = 'REGISTRAR EXPEDIENTES';
+          break;
+      default:
+          nombre = 'Título por defecto';
+  }
+  
 
     const navigate = useNavigate();
     const [open, setOpen] = React.useState(true);

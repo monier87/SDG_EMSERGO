@@ -75,10 +75,7 @@ const ExpedienteTable = () => {
   };
 
   const handleEdit = (id) => {
-    // Puedes usar algún método de enrutamiento aquí para navegar a la página de edición
-    // Por ejemplo, usando React Router: history.push(`/editar-expediente/${id}`)
-    // Asegúrate de tener las rutas y componentes necesarios configurados en tu aplicación.
-    console.log(`Editar expediente con ID: ${id}`);
+    window.location.href = `/dashboard/editar/${id}"`;
   };
 
   const handleClose = () => {

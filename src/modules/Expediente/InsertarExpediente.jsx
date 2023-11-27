@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import TextField from "@mui/material/TextField";
 import Checkbox from "@mui/material/Checkbox";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import Grid from "@mui/material/Grid";
@@ -19,10 +18,15 @@ const { Option } = Select;
 const env = configur.envDev ? configur.dev : configur.prod;
 const baseUrl = env.api.base + env.api.ruta.expedientes;
 
-function ExpedienteForm() {
-  const [formData, setFormData] = useState({});
-  const [isPrioritario, setIsPrioritario] = useState(false);
+function ExpedienteForm({ initialData }) {
+  const [formData, setFormData] = useState(initialData || {});
+  const [isPrioritario, setIsPrioritario] = useState(initialData?.prioritario || false);
   const [isPopupVisible, setIsPopupVisible] = useState(false);
+
+  useEffect(() => {
+    setFormData(initialData || {});
+    setIsPrioritario(initialData?.prioritario || false);
+  }, [initialData]);
 
   const handlePrioritarioChange = (e) => {
     setIsPrioritario(e.target.checked);
@@ -34,7 +38,8 @@ function ExpedienteForm() {
 
   const handleSave = async () => {
     try {
-      const newExpediente = {
+      const updatedExpediente = {
+        id: initialData.id, // Asegúrate de tener un campo id en initialData
         prioritario: isPrioritario,
         nombreexpediente: formData.nombreexpediente,
         fechaentrada: formData.fechaentrada,
@@ -49,25 +54,23 @@ function ExpedienteForm() {
         observaciones: formData.observaciones,
       };
 
-      const response = await fetch(baseUrl, {
-        method: "POST",
+      const response = await fetch(baseUrl + `/${initialData.id}`, {
+        method: "PUT", // Cambia a método PUT para la actualización
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(newExpediente),
+        body: JSON.stringify(updatedExpediente),
       });
 
       if (response.ok) {
-        console.log("Expediente insertado exitosamente");
+        console.log("Expediente actualizado exitosamente");
         setIsPopupVisible(true);
-
-        setFormData({}); // Limpiar el formulario
 
         setTimeout(() => {
           setIsPopupVisible(false);
         }, 3000);
       } else {
-        console.error("Error al insertar expediente");
+        console.error("Error al actualizar expediente");
       }
     } catch (error) {
       console.error("Error en la solicitud:", error);
@@ -75,8 +78,7 @@ function ExpedienteForm() {
   };
 
   const handleCancel = () => {
-    setFormData({});
-    setIsPrioritario(false);
+    // Puedes realizar alguna acción aquí si es necesario
   };
 
   return (

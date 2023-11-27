@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import TextField from "@mui/material/TextField";
 import Checkbox from "@mui/material/Checkbox";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
@@ -40,7 +41,7 @@ function ExpedienteForm({ initialData }) {
   const handleSave = async () => {
     try {
       const updatedExpediente = {
-        ...initialData, // Conserva los datos originales del expediente
+        ...initialData,
         prioritario: isPrioritario,
         nombreexpediente: formData.nombreexpediente,
         fechaentrada: formData.fechaentrada,
@@ -56,7 +57,7 @@ function ExpedienteForm({ initialData }) {
       };
 
       const response = await fetch(`${baseUrl}/${initialData.id}`, {
-        method: "PUT", // Utiliza el método PUT para la actualización
+        method: "PUT", 
         headers: {
           "Content-Type": "application/json",
         },
@@ -77,6 +78,7 @@ function ExpedienteForm({ initialData }) {
       console.error("Error en la solicitud:", error);
     }
   };
+
   const handleCancel = () => {
     setFormData({});
     setIsPrioritario(false);
@@ -256,26 +258,36 @@ function ExpedienteForm({ initialData }) {
               Cancelar
             </Button>
             <Button className="buttonGuardar" onClick={handleSave}>
-              Guardar
+              Actualizar
             </Button>
           </div>
         </div>
       </div>
       {isPopupVisible && (
         <div className="popup">
-          <p>Expediente guardado exitosamente</p>
+          <p>Expediente actualizado exitosamente</p>
         </div>
       )}
     </Card>
   );
 }
 
+ExpedienteForm.propTypes = {
+  initialData: PropTypes.shape({
+    prioritario: PropTypes.bool,
+    nombreexpediente: PropTypes.string,
+    fechaentrada: PropTypes.string, 
+    tipoexpediente: PropTypes.number,
+    destino: PropTypes.number,
+    departamento: PropTypes.string,
+    ubicacionarchivo: PropTypes.string,
+    registro: PropTypes.string,
+    fecharegistro: PropTypes.string,
+    entidad: PropTypes.number,
+    descripcion: PropTypes.string,
+    observaciones: PropTypes.string,
+    id: PropTypes.string,
+  }),
+};
+
 export default ExpedienteForm;
-
-
-
-
-
-
-
-  
