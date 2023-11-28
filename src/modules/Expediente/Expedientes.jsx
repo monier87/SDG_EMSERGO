@@ -6,6 +6,7 @@ import VerIcon from "@mui/icons-material/Visibility";
 import SearchIcon from "@mui/icons-material/Search";
 import Pagination from "@mui/material/Pagination";
 import Checkbox from '@mui/material/Checkbox';
+import {useNavigate} from "react-router-dom";
 import "../../css/Expediente.css";
 import configur from "../../env";
 
@@ -22,6 +23,8 @@ const ExpedienteTable = () => {
     const [open, setOpen] = useState(false);
     const [deleteExp, setDeleteExp] = useState(false);
     const [expedienteId, setExpedienteId] = useState(null);
+
+    const navigate= useNavigate();
 
     useEffect(() => {
         // Fetch data from the API
@@ -143,6 +146,7 @@ const ExpedienteTable = () => {
                                             >
                                             </Button>
                                             <Button
+                                                onClick={()=> navigate(`/dashboard/editar/${expediente.idexpediente}`)}
                                                 variant="text"
                                                 startIcon={<EditIcon />}
                                                 color="primary"

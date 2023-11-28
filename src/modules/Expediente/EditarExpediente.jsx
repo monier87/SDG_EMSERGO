@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect} from 'react';
 import TextField from '@mui/material/TextField';
 import Checkbox from '@mui/material/Checkbox';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
@@ -10,6 +10,8 @@ import Card from '@mui/material/Card';
 import Input from '@mui/material/Input';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+
+import {useParams} from "react-router-dom";
 
 import '../../css/InsertarExpedientes.css';
 import configur from "../../env";
@@ -23,6 +25,9 @@ function ExpedienteForm() {
     const [formData, setFormData] = useState({});
     const [isPrioritario, setIsPrioritario] = useState(false);
     const [isPopupVisible, setIsPopupVisible] = useState(false); 
+    const [expediente, setExpediente]= useState({});
+
+    const params= useParams();
 
     const handlePrioritarioChange = (e) => {
         setIsPrioritario(e.target.checked);
@@ -35,19 +40,21 @@ function ExpedienteForm() {
 
     const handleSave = async () => {
         try {
-            const newExpediente = {
-                prioritario: isPrioritario,
-                nombreexpediente: formData.nombreexpediente,
-                fechaentrada: formData.fechaentrada,
-                tipoexpediente: formData.tipoexpediente,
-                destino: formData.destino,
-                departamento: formData.departamento,
-                ubicacionarchivo: formData.ubicacionarchivo,
-                registro: formData.registro,
-                fecharegistro: formData.fecharegistro,
-                entidad: formData.entidad,
-                descripcion: formData.descripcion,
-                observaciones: formData.observaciones,
+            //const values = await form.validateFields(); // Validar los campos del formulario
+
+            const updateExpediente = {
+                prioritario: values.prioritario,
+                nombreexpediente: values.nombreexpediente,
+                fechaentrada: values.fechaentrada,
+                tipoexpediente: values.tipoexpediente,
+                destino: values.destino,
+                departamento: values.departamento,
+                ubicacionarchivo: values.ubicacionarchivo,
+                registro: values.registro,
+                fecharegistro: values.fecharegistro,
+                entidad: values.entidad,
+                descripcion: values.descripcion,
+                observaciones: values.observaciones,
             };
 
             const response = await fetch(baseUrl, {
@@ -55,18 +62,21 @@ function ExpedienteForm() {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(newExpediente),
+                body: JSON.stringify(updateExpediente),
             });
 
             if (response.ok) {
                 console.log("Expediente insertado exitosamente");
+                // Puedes realizar acciones adicionales aquí, como actualizar la lista de expedientes
                 setIsPopupVisible(true);
 
-                setFormData({}); // Limpiar el formulario
+                // Limpiar el formulario
+                form.resetFields();
 
                 setTimeout(() => {
-                    setIsPopupVisible(false);
-                }, 3000);
+                    setIsPopupVisible(false); // Ocultar el mensaje emergente después de un tiempo
+                }, 3000); // Ocultar después de 3 segundos
+
             } else {
                 console.error("Error al insertar expediente");
             }
@@ -76,10 +86,29 @@ function ExpedienteForm() {
         }
     };
 
+    const loadExpediente= async (id)=>{
+        await fetch(baseUrl + `/${id}`)
+            .then(response => response.json())
+            .then(data => {
+                setExpediente(data);
+                console.log(data.nombreexpediente);
+                setFormData(data);
+                handleChange(data);
+            })
+            .catch(error => {
+                console.error("Error fetching data:", error);
+            });
+    }
+
+    useEffect(()=>{
+        loadExpediente(params.id);
+    },[])
+
     const handleCancel = () => {
-        setFormData({});
+        form.resetFields();
         setIsPrioritario(false);
     };
+
 
     return (
         <Card className={"card"}>
