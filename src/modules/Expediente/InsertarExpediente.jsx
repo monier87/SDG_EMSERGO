@@ -28,9 +28,16 @@ function ExpedienteForm() {
     setIsPrioritario(e.target.checked);
   };
 
+<<<<<<< HEAD
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+=======
+
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+>>>>>>> a4aacb920a3acfaade56f49d929fe186cf744831
 
   const handleSave = async () => {
     try {

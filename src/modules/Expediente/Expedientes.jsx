@@ -19,7 +19,12 @@ import EditIcon from "@mui/icons-material/Edit";
 import VerIcon from "@mui/icons-material/Visibility";
 import SearchIcon from "@mui/icons-material/Search";
 import Pagination from "@mui/material/Pagination";
+<<<<<<< HEAD
 import Checkbox from "@mui/material/Checkbox";
+=======
+import Checkbox from '@mui/material/Checkbox';
+import {useNavigate} from "react-router-dom";
+>>>>>>> a4aacb920a3acfaade56f49d929fe186cf744831
 import "../../css/Expediente.css";
 import configur from "../../env";
 
@@ -37,6 +42,7 @@ const ExpedienteTable = () => {
   const [deleteExp, setDeleteExp] = useState(false);
   const [expedienteId, setExpedienteId] = useState(null);
 
+<<<<<<< HEAD
   useEffect(() => {
     // Fetch data from the API
     fetch(baseUrl)
@@ -49,6 +55,22 @@ const ExpedienteTable = () => {
         console.error("Error fetching data:", error);
       });
   }, [deleteExp]);
+=======
+    const navigate= useNavigate();
+
+    useEffect(() => {
+        // Fetch data from the API
+        fetch(baseUrl)
+            .then(response => response.json())
+            .then(data => {
+                setExpedientes(data);
+                console.log(data);
+            })
+            .catch(error => {
+                console.error("Error fetching data:", error);
+            });
+    }, [deleteExp]); 
+>>>>>>> a4aacb920a3acfaade56f49d929fe186cf744831
 
   const handleDelete = async (id) => {
     setExpedienteId(id);
@@ -108,6 +130,7 @@ const ExpedienteTable = () => {
     setOpen(true);
   };
 
+<<<<<<< HEAD
   return (
     <Card variant="outlined">
       <div
@@ -183,6 +206,87 @@ const ExpedienteTable = () => {
                       <Button
                         variant="text"
                         startIcon={<VerIcon />}
+=======
+                <TextField
+                    label="Buscar expediente"
+                    variant="outlined"
+                    size="small"
+                    fullWidth
+                    value={searchTerm}
+                    onChange={handleSearch}
+                    InputProps={{
+                        startAdornment: (
+                            <InputAdornment position="start">
+                                <SearchIcon style={{ color: "#0e9390" }} />
+                            </InputAdornment>
+                        ),
+                        style: { color: "#0e9390" },
+                    }}
+                    style={{ marginBottom: "10px" }}
+                />
+                <TableContainer component={Paper}>
+                    <Table>
+                        <TableHead className="tablecell">
+                            <TableRow>
+                                <TableCell align={"center"} style={{ color: "#0e9390" }}>PRIORITARIO</TableCell>
+                                <TableCell align={"center"} style={{ color: "#0e9390" }}>FECHA</TableCell>
+                                <TableCell style={{ color: "#0e9390" }}>NÚMERO DE EXPEDIENTE</TableCell>
+                                <TableCell style={{ color: "#0e9390" }}>NOMBRE DE EXPEDIENTE</TableCell>
+                                <TableCell style={{ color: "#0e9390" }}>UBICACIÓN DEL ARCHIVO</TableCell>
+                                <TableCell style={{ color: "#0e9390" }}>ENTIDAD</TableCell>
+                                <TableCell align={"center"} style={{ color: "#0e9390" }}>ACCIONES</TableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            {displayedExpedientes.map((expediente, index) => (
+                                <TableRow key={index}>
+                                    <TableCell style={{ textAlign: "center" }}><Checkbox defaultChecked={expediente.prioritario} disabled></Checkbox></TableCell>
+                                    <TableCell>{expediente.fechaentrada}</TableCell>
+                                    <TableCell style={{ textAlign: "center" }}>{expediente.idexpediente}</TableCell>
+                                    <TableCell style={{ textAlign: "center" }}>{expediente.nombreexpediente}</TableCell>
+                                    <TableCell style={{ textAlign: "center" }}>{expediente.descripcion}</TableCell>
+                                    <TableCell style={{ textAlign: "center" }}>{expediente.entidad}</TableCell>
+                                    <TableCell>
+                                        <div className="actions">
+                                            <Button
+                                                variant="text"
+                                                startIcon={<VerIcon />}
+                                                color="primary"
+                                            >
+                                            </Button>
+                                            <Button
+                                                onClick={()=> navigate(`/dashboard/editar/${expediente.idexpediente}`)}
+                                                variant="text"
+                                                startIcon={<EditIcon />}
+                                                color="primary"
+                                            >
+                                            </Button>
+                                            <Button
+                                                onClick={() => handleDelete(expediente.idexpediente)}
+                                                variant="text"
+                                                startIcon={<DeleteIcon />}
+                                                color="secondary"
+                                            >
+                                            </Button>
+                                        </div>
+                                    </TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </TableContainer>
+                <div
+                    style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        marginTop: "16px",
+                    }}
+                >
+                    <Pagination
+                        count={Math.ceil(filteredExpedientes.length / itemsPerPage)}
+                        page={page}
+                        onChange={handleChangePage}
+>>>>>>> a4aacb920a3acfaade56f49d929fe186cf744831
                         color="primary"
                       ></Button>
                       <Button
