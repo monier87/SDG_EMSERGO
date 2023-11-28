@@ -28,7 +28,7 @@ import {useNavigate} from "react-router-dom";
 import "../../css/Expediente.css";
 import configur from "../../env";
 
-const itemsPerPage = 7;
+const itemsPerPage = 10;
 
 const env = configur.envDev ? configur.dev : configur.prod;
 const baseUrl = env.api.base + env.api.ruta.expedientes;
