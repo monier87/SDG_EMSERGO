@@ -92,8 +92,6 @@ function ExpedienteForm() {
             .then(data => {
                 setExpediente(data);
                 console.log(data.nombreexpediente);
-                setFormData(data);
-                handleChange(data);
             })
             .catch(error => {
                 console.error("Error fetching data:", error);
