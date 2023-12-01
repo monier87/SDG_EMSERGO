@@ -91,7 +91,7 @@ function ExpedienteForm() {
             .then(response => response.json())
             .then(data => {
                 setExpediente(data);
-                console.log(data.nombreexpediente);
+                console.log(data);
             })
             .catch(error => {
                 console.error("Error fetching data:", error);
@@ -106,6 +106,13 @@ function ExpedienteForm() {
         form.resetFields();
         setIsPrioritario(false);
     };
+
+
+
+
+
+
+
 
 
     return (
@@ -124,7 +131,8 @@ function ExpedienteForm() {
                             <TextField
                                 label="NOMBRE DE EXPEDIENTE"
                                 name="nombreexpediente"
-                                value={formData.nombreexpediente || ''}
+                                // value={formData.nombreexpediente || ''}
+                                value={expediente.nombreexpediente || ''}
                                 onChange={handleChange}
                                 fullWidth
                                 variant="outlined"
@@ -146,7 +154,7 @@ function ExpedienteForm() {
                                     <Select
                                         label="TIPO DE EXPEDIENTE"
                                         name="tipoexpediente"
-                                        value={formData.tipoexpediente || ''}
+                                        value={expediente.tipoexpediente || ''}
                                         onChange={handleChange}
                                         fullWidth
                                         variant="outlined"
